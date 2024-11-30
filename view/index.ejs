@@ -1,0 +1,28 @@
+<h1>Danh sách cây</h1>
+<ul>
+  <% trees.forEach(tree => { %>
+    <li>
+      <h3><%= tree.treename %></h3>
+      <p><%= tree.description %></p>
+      <% if (tree.image) { %> <!-- Kiểm tra xem có hình ảnh không -->
+        <img src="<%= tree.image %>" alt="<%= tree.treename %>" width="200">
+      <% } %>
+    </li>
+  <% }) %>
+</ul>
+
+<h2>Thêm cây mới</h2>
+<form action="/addTree" method="POST">
+    <label for="treename">Tên cây:</label>
+    <input type="text" name="treename" required>
+    <br>
+    <label for="description">Mô tả:</label>
+    <textarea name="description" required></textarea>
+    <br>
+    <label for="image">Hình ảnh:</label>
+    <input type="text" name="image">
+    <br>
+    <button type="submit">Thêm cây</button>
+  </form>
+
+<a href="/reset">Reset database</a>
